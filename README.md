@@ -3,4 +3,4 @@
 This is a pet project to learn more about Rails and various gems. The goal is to
 create a web app that helps people follow a vegan diet for a week.
 
-Created by [http://casvanderhoven.me](Cas van der Hoven).
+Created by [Cas van der Hoven](http://casvanderhoven.me).
