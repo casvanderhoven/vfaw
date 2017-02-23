@@ -16,6 +16,7 @@ gem "simple_form"
 gem "sprockets"
 gem "suspenders"
 gem "title"
+gem "high_voltage"
 gem "clearance"
 gem "uglifier"
 
