@@ -11,10 +11,10 @@ puts "Deleting Records"
 Recipe.delete_all
 User.delete_all
 
-puts "Creating User"
-user = FactoryGirl.create(:user, email: "test@example.com")
+puts "Creating non-admin User"
+admin = FactoryGirl.create(:user, email: "casvanderhoven@gmail.com", password: "H!jklmn0p", admin: true)
 
 puts "Creating Recipes"
 20.times do
-  FactoryGirl.create(:recipe, user: user)
+  FactoryGirl.create(:recipe, user: admin)
 end

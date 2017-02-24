@@ -1,16 +1,23 @@
 <section><h1>recipes</h1></section>
-
+<section>
+  <% if current_user.admin? %>
+    <%= button_to 'Add Recipe', new_recipe_path, method: :get %>
+  <% end %>
+</section>
 <div class="cards">
   <% @recipes.each do |recipe| %>
     <div class="card">
       <div class="card-image">
-        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png" alt="">
+        <%= image_tag recipe.image.url %>
       </div>
       <div class="card-header">
         <h2 class="recipe-title"><%= link_to recipe.name, recipe_path(recipe) %></h2>
       </div>
       <div class="card-copy">
-        <p><%= recipe.description %></p>
+        <p>
+        <%= recipe.mealtype %>, 
+        <%= recipe.description %>
+        </p>
       </div>
     </div>
   <% end %>

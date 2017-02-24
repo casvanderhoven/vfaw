@@ -1,16 +1,20 @@
 <article>
-<section><h1><%= @recipe.name %></h1></section>
-
-<section>
-  <h2 class="subheader"><%= @recipe.description %></h2>
-</section>
-<section class="recipe">
-  <h5>Ingredients</h5>
-  <p>
-  </p>
-  <h5>Instructions</h5>
-  <p>
-  <%= @recipe.instructions %>
-  </p>
-</section>
+  <section><h1><%= @recipe.name %></h1></section>
+  <section>
+    <% if current_user.admin? %>
+      <%= button_to 'Edit Recipe', new_recipe_path, method: :get %>
+    <% end %>
+  </section>
+  <section>
+    <h2 class="subheader"><%= @recipe.description %></h2>
+  </section>
+  <section class="recipe">
+    <h5>Ingredients</h5>
+    <p>
+    </p>
+    <h5>Instructions</h5>
+    <p>
+    <%= @recipe.instructions %>
+    </p>
+  </section>
 </article>

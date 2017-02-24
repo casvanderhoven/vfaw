@@ -10,28 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224105032) do
+ActiveRecord::Schema.define(version: 20170224223203) do
 
   create_table "recipes", force: :cascade do |t|
-    t.string   "name",         null: false
-    t.text     "description",  null: false
-    t.text     "instructions", null: false
-    t.integer  "user_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.         "ingredients"
-    t.index ["ingredients"], name: "index_recipes_on_ingredients"
+    t.string   "name",               null: false
+    t.text     "description",        null: false
+    t.text     "instructions",       null: false
+    t.integer  "user_id",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "mealtype"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["user_id", "name"], name: "index_recipes_on_user_id_and_name"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "email",                          null: false
-    t.string   "encrypted_password", limit: 128, null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.string   "email",                                          null: false
+    t.string   "encrypted_password", limit: 128,                 null: false
     t.string   "confirmation_token", limit: 128
-    t.string   "remember_token",     limit: 128, null: false
+    t.string   "remember_token",     limit: 128,                 null: false
+    t.boolean  "admin",                          default: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

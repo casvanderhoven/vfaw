@@ -60,6 +60,7 @@ GEM
       bundler (~> 1.2)
       thor (~> 0.18)
     byebug (9.0.6)
+    cancancan (1.16.0)
     capybara (2.12.1)
       addressable
       mime-types (>= 1.16)
@@ -74,6 +75,9 @@ GEM
       bcrypt
       email_validator (~> 1.4)
       rails (>= 3.1)
+    climate_control (0.1.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
     concurrent-ruby (1.0.4)
     crack (0.4.3)
@@ -127,6 +131,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     neat (2.0.0)
@@ -136,6 +141,12 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     normalize-rails (4.1.1)
+    paperclip (5.1.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
     pg (0.19.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -275,6 +286,7 @@ DEPENDENCIES
   bourbon
   bullet
   bundler-audit
+  cancancan
   capybara-webkit
   clearance
   database_cleaner
@@ -289,6 +301,7 @@ DEPENDENCIES
   listen
   neat
   normalize-rails
+  paperclip
   pg
   pry-byebug
   pry-rails

@@ -2,5 +2,7 @@
   <%= form.input :name %>
   <%= form.input :description %>
   <%= form.input :instructions %>
+  <%= form.input :mealtype, collection: [:breakfast, :lunch, :dinner] %> 
+  <%= form.input :picture, as: :file %>
   <%= form.button :submit %>
 <% end %>
