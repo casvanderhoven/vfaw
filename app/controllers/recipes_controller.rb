@@ -24,11 +24,6 @@ class RecipesController < ApplicationController
 
     if @recipe.save
 
-      if params[:images]
-        params[:images].each { |image|
-          @recipe.pictures.create(image: image)
-        }
-      end
       redirect_to recipe_path(@recipe), notice: "Recipe created!"
     else
       @errors = @recipe.errors.full_messages

@@ -3,6 +3,6 @@
   <%= form.input :description %>
   <%= form.input :instructions %>
   <%= form.input :mealtype, collection: [:breakfast, :lunch, :dinner] %> 
-  <%= form.input :picture, as: :file %>
-  <%= form.button :submit %>
+  <%= form.input :image, as: :file %>
+  <%= form.button :submit, "Submit!"  %>
 <% end %>

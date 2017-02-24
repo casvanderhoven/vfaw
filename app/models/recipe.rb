@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :user
 
-  has_attached_file :image, default_url: "/images/missing.png"
+  has_attached_file :image, default_url: "http://placehold.it/800x800"
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
