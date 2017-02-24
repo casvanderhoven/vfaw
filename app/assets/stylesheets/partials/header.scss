@@ -4,8 +4,12 @@ header {
     @include grid-column(3);
     li {
       display: inline;
+      margin-right: 10px;
       a {
         color: $light-gray;
+        &.active {
+          color: $primary;
+        }
       }
     }
   }

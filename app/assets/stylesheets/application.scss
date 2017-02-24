@@ -1,9 +1,11 @@
+@import "normalize-rails";
 @import url('https://fonts.googleapis.com/css?family=Lato:400,900|Open+Sans:300,400,700');
 @import "bourbon";
 @import "base/base";
 @import "neat";
 @import "partials/header";
 @import "partials/page";
+@import "refills/cards";
 
 body {
   @include grid-container;

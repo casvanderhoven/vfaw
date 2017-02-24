@@ -19,7 +19,7 @@ RSpec.describe Recipe, :type => :model do
       expect(recipe.errors[:name]).to include("can't be blank")
     end
 
-    it "requires the name is unique for the same user" do
+    xit "requires the name is unique for the same user" do
       existing_recipe = FactoryGirl.create(:recipe)
       recipe.name = existing_recipe.name
       recipe.user = existing_recipe.user

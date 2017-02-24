@@ -1,20 +1,35 @@
 section {
   @include grid-container;
+
+  h1 {
+    @include grid-column(6);
+  }
+
+  h2.subheader {
+    @include grid-column(6);
+    font-family: $base-font-family;
+    font-weight: 300;
+    color: $black;
+    opacity: 0.5;
+  }
+
+  p.welcome-text {
+    @include grid-column(5);
+  }
+
+  form {
+    @include grid-column(5);
+  }
 }
 
-h1 {
+section.recipe {
+  @include grid-container;
   @include grid-column(6);
+  border: 1px dashed $black;
+  padding: $small-spacing;
+  h5 {
+    font-family: $base-font-family;
+    font-weight: 300;
+    font-size: $base-font-size;
+  }
 }
-
-h2.subheader {
-  @include grid-column(5);
-  font-family: $base-font-family;
-  font-weight: 300;
-  color: $black;
-  opacity: 0.5;
-}
-
-p {
-  @include grid-column(5);
-}
-

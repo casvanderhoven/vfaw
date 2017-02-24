@@ -1,7 +1,8 @@
 <header>
   <ul>
-    <li><%= link_to "home", root_path %></li>
-    <li><%= link_to "recipes", "#"  %></li>
+    <li>
+    <%= link_to "home", root_path, class: cp('/') %></li>
+    <li><%= link_to "recipes", recipes_path, class: cp('/recipes/') %></li>
     <li><%= link_to "veganism", "#" %></li>
   </ul>
   <% if signed_in? %>
