@@ -1,0 +1,16 @@
+header {
+  @include grid-container;
+  ul {
+    @include grid-column(3);
+    li {
+      display: inline;
+      a {
+        color: $light-gray;
+      }
+    }
+  }
+  input {
+    @include grid-column(1);
+    @include grid-push(8);
+  }
+}
