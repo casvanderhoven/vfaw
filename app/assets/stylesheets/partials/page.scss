@@ -1,0 +1,20 @@
+section {
+  @include grid-container;
+}
+
+h1 {
+  @include grid-column(6);
+}
+
+h2.subheader {
+  @include grid-column(5);
+  font-family: $base-font-family;
+  font-weight: 300;
+  color: $black;
+  opacity: 0.5;
+}
+
+p {
+  @include grid-column(5);
+}
+

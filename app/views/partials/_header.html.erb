@@ -1,0 +1,13 @@
+<header>
+  <ul>
+    <li><%= link_to "home", root_path %></li>
+    <li><%= link_to "recipes", "#"  %></li>
+    <li><%= link_to "veganism", "#" %></li>
+  </ul>
+  <% if signed_in? %>
+    Signed in as: <%= current_user.email %>
+  <%= button_to 'Log Out', sign_out_path, method: :delete %>
+<% else %>
+  <%= button_to 'Log In', sign_in_path, method: :get  %>
+<% end %>
+</header>
