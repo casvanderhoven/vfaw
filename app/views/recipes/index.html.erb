@@ -7,15 +7,18 @@
 <div class="cards">
   <% @recipes.each do |recipe| %>
     <div class="card">
-      <div class="card-image">
-        <%= image_tag recipe.image.url %>
+      <%= link_to recipe_path(recipe) do %>
+      <div class="card-image ribbon-box" style="background-image: url('<%= recipe.image.url %>');">
+        <div class="ribbon-wrapper">
+          <div class="ribbon"><%= recipe.mealtype %></div>
+        </div>
       </div>
+    <% end %>
       <div class="card-header">
         <h2 class="recipe-title"><%= link_to recipe.name, recipe_path(recipe) %></h2>
       </div>
       <div class="card-copy">
         <p>
-        <%= recipe.mealtype %>, 
         <%= recipe.description %>
         </p>
       </div>
