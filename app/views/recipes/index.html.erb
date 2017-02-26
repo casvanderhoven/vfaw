@@ -1,19 +1,14 @@
 <section><h1>recipes</h1></section>
-<section>
-  <% if current_user.admin? %>
-    <%= button_to 'Add Recipe', new_recipe_path, method: :get %>
-  <% end %>
-</section>
 <div class="cards">
   <% @recipes.each do |recipe| %>
     <div class="card">
       <%= link_to recipe_path(recipe) do %>
-      <div class="card-image ribbon-box" style="background-image: url('<%= recipe.image.url %>');">
-        <div class="ribbon-wrapper">
-          <div class="ribbon"><%= recipe.mealtype %></div>
+        <div class="card-image ribbon-box" style="background-image: url('<%= recipe.image.url %>');">
+          <div class="ribbon-wrapper">
+            <div class="ribbon"><%= recipe.mealtype %></div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
       <div class="card-header">
         <h2 class="recipe-title"><%= link_to recipe.name, recipe_path(recipe) %></h2>
       </div>
@@ -25,3 +20,5 @@
     </div>
   <% end %>
 </div>
+
+<%= render 'filter.html.erb' %>

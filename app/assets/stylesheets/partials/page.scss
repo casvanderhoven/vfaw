@@ -38,3 +38,24 @@ img.recipe {
   @include grid-column(4);
   @include grid-push(2);
 }
+
+form#filter {
+  @include grid-container;
+  float: right;
+  div.inline-field {
+    padding-bottom: $base-spacing;
+    text-align: right;
+    label {
+      span {
+        display: inline-block;
+        vertical-align: top;
+        font-weight: 300;
+        min-width: 80px;
+        width: 80px;
+      }
+    }
+  }
+  section {
+    float: right;
+  }
+}

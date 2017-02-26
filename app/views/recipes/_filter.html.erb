@@ -1,0 +1,28 @@
+<form id="filter" action="/recipes" method="get">
+  <div class="inline-field">
+    <label class="label-switch">
+      <input type="checkbox" id="option1" class="checkbox" name="with_mealtype[]" value="breakfast" checked>
+      <div class="checkbox"></div>
+      <span>Breakfast</span>
+    </label>
+  </div>
+  <div class="inline-field">
+    <label class="label-switch">
+      <input type="checkbox" id="option2" class="checkbox" name="with_mealtype[]" value="lunch" checked>
+      <div class="checkbox"></div>
+      <span>Lunch</span>
+    </label>
+  </div>
+  <div class="inline-field">
+    <label class="label-switch">
+      <input type="checkbox" id="option3" class="checkbox" name="with_mealtype[]" value="dinner" checked>
+      <div class="checkbox"></div>
+      <span>Dinner</span>
+    </label>
+  </div>
+<section>
+  <% if current_user.admin? %>
+    <%= button_to 'Add Recipe', new_recipe_path, method: :get %>
+  <% end %>
+</section>
+</form>

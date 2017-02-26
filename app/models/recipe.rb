@@ -1,5 +1,10 @@
 class Recipe < ApplicationRecord
+  include  Filterable
+
   belongs_to :user
+
+  scope :with_mealtype, -> (mealtypes) { where mealtype: [mealtypes] }
+
 
   has_attached_file :image, default_url: "http://placehold.it/800x800"
 

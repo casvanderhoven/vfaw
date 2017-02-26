@@ -7,8 +7,13 @@
 @import "partials/page";
 @import "refills/cards";
 @import "refills/ribbon";
+@import "refills/switch";
 
 body {
-  @include grid-container;
-  margin: 20px 20px 0px 20px;
+  margin: 20px 20px 20px 20px;
+}
+
+div.wrapper {
+  width: 80%;
+  margin: 0 auto;
 }

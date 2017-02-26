@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   @include grid-column(8);
-  margin-left: 0px;
 }
 
 .card {
@@ -28,10 +27,9 @@
   cursor: pointer;
   flex-basis: 15em;
   flex-grow: 1;
-  margin: 0 $card-margin $base-spacing $card-margin;
+  margin: 0 ($card-margin * 2) $base-spacing 0;
   position: relative;
   transition: all 0.2s ease-in-out;
-  @include grid-column(4);
 
   .card-image {
     background-color: $card-image-hover-color;
