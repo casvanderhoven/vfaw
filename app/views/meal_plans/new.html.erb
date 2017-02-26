@@ -1,0 +1,8 @@
+<section><h1>Start your vegan week!</h1></section>
+
+<%= simple_form_for @meal_plan, url: new_meal_plan_path, method: "GET" do |f| %>
+  <%= f.input :start_date %>
+  <%= f.submit "Submit" %>
+<% end %>
+
+<%= render "form" %>

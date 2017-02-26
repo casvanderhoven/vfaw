@@ -1,0 +1,23 @@
+<section><h1>your vegan week of <%= @meal_plan %></h1></section>
+<div class="cards">
+  <% @meal_plan.meals.each do |meal| %>
+    <div class="card">
+      <%= link_to recipe_path(meal.recipe) do %>
+        <div class="card-image ribbon-box" style="background-image: url('<%= meal.recipe.image.url %>');">
+          <div class="ribbon-wrapper">
+            <div class="ribbon"><%= meal.recipe.mealtype %></div>
+          </div>
+        </div>
+      <% end %>
+      <div class="card-header">
+        <h2 class="recipe-title"><%= link_to meal.recipe.name, recipe_path(meal.recipe) %></h2>
+      </div>
+      <div class="card-copy">
+        <p>
+        <%= meal.date %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
