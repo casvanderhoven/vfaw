@@ -20,9 +20,9 @@
       <span>Dinner</span>
     </label>
   </div>
+</form>
 <section>
   <% if current_user.admin? %>
     <%= button_to 'Add Recipe', new_recipe_path, method: :get %>
   <% end %>
 </section>
-</form>

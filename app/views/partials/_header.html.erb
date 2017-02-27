@@ -15,3 +15,10 @@
     <%= button_to 'Log In', sign_in_path, method: :get  %>
   <% end %>
 </header>
+<section class="flashes">
+<% flash.each do |key, value| %>
+<div class="flash-<%= key %>">
+  <span><%= value %></span>
+</div>
+<% end %>
+</section>

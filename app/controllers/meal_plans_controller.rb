@@ -16,7 +16,8 @@ class MealPlansController < ApplicationController
     @meal_plan = current_user.meal_plans.build(meal_plan_params)
 
     if @meal_plan.save
-      redirect_to meal_plan_path(@meal_plan), notice: "You're all set!"
+      flash[:success] = "You're all set!"
+      redirect_to meal_plan_path(@meal_plan)
     else
       @errors = @meal_plan.errors.full_messages
       render :new
@@ -31,7 +32,8 @@ class MealPlansController < ApplicationController
     @meal_plan = current_user.meal_plans.find(params[:id])
 
     if @meal_plan.update_attributes(meal_plan_params)
-      redirect_to meal_plan_path(@meal_plan), notice: "Meal plan updated!"
+      flash[:success] = "Meal plan updated!"
+      redirect_to meal_plan_path(@meal_plan)
     else
       @errors = @meal_plan.errors.full_messages
       render :edit
@@ -45,7 +47,8 @@ class MealPlansController < ApplicationController
   def destroy
     @meal_plan = current_user.meal_plans.find(params[:id])
     @meal_plan.destroy
-    redirect_to meal_plans_path, notice: "Meal plan deleted!"
+    flash[:alert] = "Meal plan deleted!"
+    redirect_to meal_plans_path
   end
 
   private

@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   def destroy
     recipe = current_user.recipes.find(params[:id])
     recipe.destroy
-    redirect_to recipes_path, notice: "Deleted recipe: #{recipe.name}"
+    redirect_to recipes_path, flash[:notice] = "Deleted recipe: #{recipe.name}"
   end
 
   def new
@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
 
     if @recipe.save
 
-      redirect_to recipe_path(@recipe), notice: "Recipe created!"
+      redirect_to recipe_path(@recipe), flash[:succes] = "Recipe created!"
     else
       @errors = @recipe.errors.full_messages
       render :new
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.find(params[:id])
 
     if @recipe.update_attributes(recipe_params)
-      redirect_to recipe_path(@recipe), notice: "Recipe updated!"
+      redirect_to recipe_path(@recipe), flash[:success] = "Recipe updated!"
     else
       @errors = @recipe.errors.full_messages
       render :edit

@@ -5,8 +5,8 @@
   <%= f.fields_for :meals do |meal_f| %>
     <%= meal_f.hidden_field :id %>
     <%= meal_f.hidden_field :date %>
-    <p><%= meal_f.object.date.to_s %></p>
-    <%= meal_f.select :recipe_id, current_user.recipe_options %>
+    <%-#    <p><%= meal_f.object.date.to_s %></p> -%>
+    <%-#    <%= meal_f.select :recipe_id, current_user.recipe_options %> -%>
   <% end %>
   <%= f.submit %>
 <% end %>

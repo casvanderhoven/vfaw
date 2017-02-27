@@ -1,8 +1,14 @@
 <section><h1>Start your vegan week!</h1></section>
 
-<%= simple_form_for @meal_plan, url: new_meal_plan_path, method: "GET" do |f| %>
+<%= simple_form_for @meal_plan do |f| %>
   <%= f.input :start_date %>
+  <%= f.fields_for :meals do |meal_f| %>
+    <%= meal_f.hidden_field :id %>
+    <%= meal_f.hidden_field :date %>
+    <%= meal_f.hidden_field :recipe_id %>
+  <% end %>
   <%= f.submit "Submit" %>
 <% end %>
-
-<%= render "form" %>
+<% if false %>
+  <%= render "form" %>
+<% end %>

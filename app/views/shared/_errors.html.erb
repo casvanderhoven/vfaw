@@ -1,9 +1,11 @@
 <% if @errors.present? %>
-  <div class="errors">
+  <section class="errors">
+  <div class="flash-error">
     <ul>
       <% @errors.each do |error| %>
         <li><%= error %></li>
       <% end %>
     </ul>
   </div>
+  </section>
 <% end %>
