@@ -23,8 +23,29 @@ class MealPlansController < ApplicationController
     end
   end
 
+  def edit
+    @meal_plan = current_user.meal_plans.find(params[:id])
+  end
+
+  def update
+    @meal_plan = current_user.meal_plans.find(params[:id])
+
+    if @meal_plan.update_attributes(meal_plan_params)
+      redirect_to meal_plan_path(@meal_plan), notice: "Meal plan updated!"
+    else
+      @errors = @meal_plan.errors.full_messages
+      render :edit
+    end
+  end
+
   def show
     @meal_plan = current_user.meal_plans.find(params[:id])
+  end
+
+  def destroy
+    @meal_plan = current_user.meal_plans.find(params[:id])
+    @meal_plan.destroy
+    redirect_to meal_plans_path, notice: "Meal plan deleted!"
   end
 
   private

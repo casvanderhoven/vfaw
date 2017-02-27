@@ -1,6 +1,6 @@
 class MealPlan < ApplicationRecord
   belongs_to :user
-  has_many :meals, -> { order(:date) }, inverse_of: :meal_plan
+  has_many :meals, -> { order(:date) }, inverse_of: :meal_plan, dependent: :destroy
 
   accepts_nested_attributes_for :meals
 
@@ -9,14 +9,22 @@ class MealPlan < ApplicationRecord
 
   def build_meals
     recipes = Recipe.all
-    recipe_ids = recipes.pluck(:id)
+    breakfast_ids  = recipes.where(:mealtype => "breakfast").pluck(:id)
+    lunch_ids  = recipes.where(:mealtype => "lunch").pluck(:id)
+    dinner_ids  = recipes.where(:mealtype => "dinner").pluck(:id)
 
     (start_date..(start_date + 6)).each do |date|
-      unused_recipes = recipe_ids - meals.map(&:recipe_id)
+      unused_breakfast = breakfast_ids - meals.map(&:recipe_id)
+      unused_lunch = lunch_ids - meals.map(&:recipe_id)
+      unused_dinner = dinner_ids - meals.map(&:recipe_id)
 
-      available_recipes = unused_recipes.empty? ? recipe_ids : unused_recipes
+      available_breakfast = unused_breakfast.empty? ? breakfast_ids : unused_breakfast
+      available_lunch = unused_lunch.empty? ? lunch_ids : unused_lunch
+      available_dinner = unused_dinner.empty? ? dinner_ids : unused_dinner
 
-      meals.build(date: date, recipe_id: available_recipes.sample)
+      meals.build(date: date, recipe_id: available_breakfast.sample)
+      meals.build(date: date, recipe_id: available_lunch.sample)
+      meals.build(date: date, recipe_id: available_dinner.sample)
     end
   end
 

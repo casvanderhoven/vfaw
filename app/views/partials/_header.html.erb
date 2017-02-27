@@ -3,7 +3,11 @@
     <li>
       <%= link_to "home", root_path, class: cp('/') %></li>
     <li><%= link_to "recipes", recipes_path, class: cp('/recipes/') %></li>
-    <li><%= link_to "veganism", "#" %></li>
+    <% if signed_in? && current_user.meal_plans.present? %>
+      <li><%= link_to "your vegan week", meal_plans_path, class: cp('/meal_plans/') %></li>
+    <% elsif signed_in? && !current_user.meal_plans.present? %>
+      <li><%= link_to "start your vegan week", new_meal_plan_path %></li>
+    <% end %>
   </ul>
   <% if signed_in? %>
     <%= button_to 'Log Out', sign_out_path, method: :delete %>
