@@ -59,3 +59,13 @@ form#filter {
     float: right;
   }
 }
+
+ul.ingredients {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
+div#clearance {
+  @include grid-column(4);
+}
