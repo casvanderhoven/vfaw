@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226185750) do
+ActiveRecord::Schema.define(version: 20170227155206) do
 
   create_table "meal_plans", force: :cascade do |t|
     t.date     "start_date", null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170226185750) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "ingredient_list"
     t.index ["user_id", "name"], name: "index_recipes_on_user_id_and_name"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end

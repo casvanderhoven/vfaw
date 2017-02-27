@@ -11,6 +11,12 @@
   <section class="recipe">
     <h5>Ingredients</h5>
     <p>
+    <ul>
+    <% @ingredients.each do |ingredient| %>
+      <% ingredient = ingredient.humanize %>
+      <li><%= ingredient %></li>
+    <% end %>
+    </ul>
     </p>
     <h5>Instructions</h5>
     <p>

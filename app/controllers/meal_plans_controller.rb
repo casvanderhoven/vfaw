@@ -7,13 +7,12 @@ class MealPlansController < ApplicationController
   end
 
   def new
-    @meal_plan = current_user.meal_plans.build(start_date: params[:start_date] || 1.days.from_now.to_date)
-
-    @meal_plan.build_meals
+    @meal_plan = current_user.meal_plans.build
   end
 
   def create
     @meal_plan = current_user.meal_plans.build(meal_plan_params)
+    @meal_plan.build_meals
 
     if @meal_plan.save
       flash[:success] = "You're all set!"
