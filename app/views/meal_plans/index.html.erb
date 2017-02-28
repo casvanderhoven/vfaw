@@ -1,54 +1,15 @@
-<% iterator = 0 %>
 <% if @current_meal_plan.present? %>
-<% @current_meal_plan.meals.each do |meal| %>
-  <% if meal.date == Date.today %>
-    <% if iterator == 0 %>
-      <section><h1>today's menu</h1></section>
-      <div class="cards">
-      <% end %>
-      <div class="card">
-        <%= link_to recipe_path(meal.recipe) do %>
-          <div class="card-image ribbon-box" style="background-image: url('<%= meal.recipe.image.url %>');">
-            <div class="ribbon-wrapper">
-              <div class="ribbon"><%= meal.recipe.mealtype %></div>
-            </div>
-          </div>
-        <% end %>
-        <div class="card-header">
-          <h2 class="recipe-title"><%= link_to meal.recipe.name, recipe_path(meal.recipe) %><h2>
-        </div>
-      </div>
-      <% iterator += 1 %>
-      <% if iterator == 3 %>
-        </div>
-      <% end %>
-
-    <% end %>
-  <% end %>
+  <section><h1>today's menu</h1></section>
+  <div class="cards">
+    <%= render partial: 'meal_cards', locals: { meals: @todays_meals } %>
+  </div>
   <section><h1>rest of the week</h1></section>
   <div class="cards">
-    <% @current_meal_plan.meals.each do |meal| %>
-      <% if meal.date.strftime("%s").to_i > Time.now.to_i %>
-        <div class="card">
-          <%= link_to recipe_path(meal.recipe) do %>
-            <div class="card-image ribbon-box" style="background-image: url('<%= meal.recipe.image.url %>');">
-              <div class="ribbon-wrapper">
-                <div class="ribbon"><%= meal.recipe.mealtype %></div>
-              </div>
-            </div>
-          <% end %>
-          <div class="card-header">
-            <h2 class="recipe-title"><%= link_to meal.recipe.name, recipe_path(meal.recipe) %></h2>
-          </div>
-          <div class="card-copy">
-            <p>
-            <%= meal.date.strftime("%A, %B %d") %>
-            </p>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render partial: 'meal_cards', locals: {meals: @meals_after_today } %>
   </div>
-  <% else %>
-    <%= link_to "Get started with your week as a vegan!", new_meal_plan_path %>
+<% else %>
+  <article>
+    <section><h1>start your vegan week</h1></section>
+    <section><p class="welcome-text">
+      Are you ready to get started? <%= link_to "Click here", new_meal_plan_path %> to pick a starting date for your vegan week!</p></section>
   <% end %>

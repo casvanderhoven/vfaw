@@ -7,6 +7,8 @@ class MealPlan < ApplicationRecord
   validates :start_date, presence: true
   validates :user, presence: true
 
+  scope :current_meal_plan, lambda { where("start_date <= ?", Date.tomorrow).first }
+
   def build_meals
     recipes = Recipe.all
     breakfast_ids  = recipes.where(:mealtype => "breakfast").pluck(:id)

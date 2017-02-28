@@ -2,7 +2,9 @@ class MealPlansController < ApplicationController
   before_action :require_login
 
   def index
-    @current_meal_plan = current_user.meal_plans.where("start_date <= ?", Date.tomorrow).first
+    @current_meal_plan = current_user.meal_plans.current_meal_plan
+    @todays_meals = @current_meal_plan.meals.for_today
+    @meals_after_today = @current_meal_plan.meals.after_today
     @meal_plans = current_user.meal_plans.all
   end
 
@@ -40,7 +42,7 @@ class MealPlansController < ApplicationController
   end
 
   def show
-    @meal_plan = current_user.meal_plans.find(params[:id])
+    redirect_to meal_plans_path
   end
 
   def destroy

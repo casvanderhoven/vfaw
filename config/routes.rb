@@ -8,5 +8,4 @@ Rails.application.routes.draw do
   end
   resources :meal_plans
 
-
 end

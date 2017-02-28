@@ -1,13 +1,31 @@
-<article>
-  <section>
-    <h1>become vegan for a week</h1>
-  </section>
-  <section>
-    <h2 class="subheader">I made this app for people who would like to try out a vegan diet for a week. It sets you up nicely with recipes for breakfast, lunch, and dinner for the whole week, as well as a grocery list.</h2>
-  </section>
-  <section>
-    <p class="welcome-text">
-    If you want to get started straight away, you can <%= link_to 'make an account', sign_up_path %>. You can also check out <%= link_to 'the recipes', recipes_path  %> I’ve written.
-    </p>
-  </section>
-</article>
+<% if signed_in? %>
+  <article>
+    <section>
+      <h1>what's up!</h1>
+    </section>
+      <section>
+      <h2 class="subheader">
+    <% if current_user.meal_plans.current_meal_plan.presence %>
+        Continue with your vegan week! <%= link_to "Check today's recipes.", meal_plans_path %>
+    <% else %>
+      Are you ready to start your vegan week? <%= link_to "Get started!", meal_plans_path %>
+      </h2>
+      <% end %>
+      </section>
+
+  </article>
+<% else %>
+  <article>
+    <section>
+      <h1>become vegan for a week</h1>
+    </section>
+    <section>
+      <h2 class="subheader">I made this app for people who would like to try out a vegan diet for a week. It sets you up nicely with recipes for breakfast, lunch, and dinner for the whole week, as well as a grocery list.</h2>
+    </section>
+    <section>
+      <p class="welcome-text">
+      If you want to get started straight away, you can <%= link_to 'make an account', sign_up_path %>. You can also check out <%= link_to 'the recipes', recipes_path  %> I’ve written.
+      </p>
+    </section>
+  </article>
+<% end %>

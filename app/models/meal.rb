@@ -5,4 +5,7 @@ class Meal < ApplicationRecord
   validates :date, presence: true
   validates :meal_plan, presence: true
   validates :recipe, presence: true
+
+  scope :for_today, lambda { where(date: Date.today) }
+  scope :after_today, lambda { where("date > ?", Date.today) }
 end
