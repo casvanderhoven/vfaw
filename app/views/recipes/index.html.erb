@@ -1,24 +1,6 @@
 <section><h1>recipes</h1></section>
-<div class="cards">
-  <% @recipes.each do |recipe| %>
-    <div class="card">
-      <%= link_to recipe_path(recipe) do %>
-        <div class="card-image ribbon-box" style="background-image: url('<%= recipe.image.url %>');">
-          <div class="ribbon-wrapper">
-            <div class="ribbon"><%= recipe.mealtype %></div>
-          </div>
-        </div>
-      <% end %>
-      <div class="card-header">
-        <h2 class="recipe-title"><%= link_to recipe.name, recipe_path(recipe) %></h2>
-      </div>
-      <div class="card-copy">
-        <p>
-        <%= recipe.description %>
-        </p>
-      </div>
-    </div>
-  <% end %>
+<div id="recipe-grid" class="cards">
+  <%= render partial: 'recipe_cards', locals: { recipes: @recipes } %>
 </div>
 
 <%= render 'filter.html.erb' %>

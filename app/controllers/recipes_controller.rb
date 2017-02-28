@@ -2,8 +2,17 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @recipes = Recipe.filter(params.slice(:with_mealtype))
+    @recipes = Recipe.all
   end
+
+  def with_mealtype
+    mealtypes = params[:with_mealtype]
+    @filtered_recipes = Recipe.with_mealtype(mealtypes)
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   def show
     @recipe = Recipe.find(params[:id])

@@ -1,21 +1,21 @@
-<form id="filter" action="/recipes" method="get">
+<form id="filter" action="/recipes/with_mealtype" method="get" data-remote="true">
   <div class="inline-field">
     <label class="label-switch">
-      <input type="checkbox" id="option1" class="checkbox" name="with_mealtype[]" value="breakfast" checked>
+      <input type="checkbox" id="option1" class="checkbox" name="with_mealtype[]" value="breakfast" date-remote="true" checked>
       <div class="checkbox"></div>
       <span>Breakfast</span>
     </label>
   </div>
   <div class="inline-field">
     <label class="label-switch">
-      <input type="checkbox" id="option2" class="checkbox" name="with_mealtype[]" value="lunch" checked>
+      <input type="checkbox" id="option2" class="checkbox" name="with_mealtype[]" value="lunch" date-remote="true" checked>
       <div class="checkbox"></div>
       <span>Lunch</span>
     </label>
   </div>
   <div class="inline-field">
     <label class="label-switch">
-      <input type="checkbox" id="option3" class="checkbox" name="with_mealtype[]" value="dinner" checked>
+      <input type="checkbox" id="option3" class="checkbox" name="with_mealtype[]" value="dinner" date-remote="true" checked>
       <div class="checkbox"></div>
       <span>Dinner</span>
     </label>

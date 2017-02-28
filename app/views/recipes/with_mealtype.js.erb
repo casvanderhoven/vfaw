@@ -1,0 +1,1 @@
+$("#recipe-grid").html("<%= escape_javascript(render partial: 'recipe_cards', locals: { recipes: @filtered_recipes } ) %>");
