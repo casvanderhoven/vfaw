@@ -3,7 +3,7 @@
 <%= simple_form_for @recipe do |form| %>
   <%= form.input :name %>
   <%= form.input :description %>
-  <%= form.input :ingredients %>
+  <%= form.input :ingredient_list %>
   <%= form.input :instructions %>
   <%= form.input :mealtype, collection: [:breakfast, :lunch, :dinner] %> 
   <%= form.input :image, as: :file %>
