@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @ingredients = @recipe.ingredient_list.split(', ')
+    @instruction_array = @recipe.instructions.split('/')
   end
 
   def destroy
