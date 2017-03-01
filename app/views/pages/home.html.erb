@@ -6,9 +6,13 @@
       <section>
       <h2 class="subheader">
     <% if current_user.meal_plans.current_meal_plan.presence %>
-        Continue with your vegan week! <%= link_to "Check today's recipes.", meal_plans_path %>
+        Continue with your vegan week! Check today's recipes:
+      <h2>
+      <div class="cards">
+        <%= render partial: 'meal_plans/meal_cards', locals: { meals: current_user.meal_plans.current_meal_plan.meals.for_today } %>
+      </div>
     <% else %>
-      Are you ready to start your vegan week? <%= link_to "Get started!", meal_plans_path %>
+      Are you ready to start your vegan week? <%= link_to "Get started!", new_meal_plan_path %>
       </h2>
       <% end %>
       </section>
@@ -29,3 +33,9 @@
     </section>
   </article>
 <% end %>
+
+<section><h2 class="subheader">latest recipes</h2></section>
+<div id="recipe-grid" class="cards">
+  <%= render partial: 'recipes/recipe_cards', locals: { recipes: @latest_recipes } %>
+</div>
+
