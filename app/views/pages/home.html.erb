@@ -12,7 +12,7 @@
         <%= render partial: 'meal_plans/meal_cards', locals: { meals: current_user.meal_plans.current_meal_plan.meals.for_today } %>
       </div>
     <% else %>
-      <h2>
+      <h2 class="subheader">
       Are you ready to start your vegan week? <%= link_to "Get started!", new_meal_plan_path %>
       </h2>
       <% end %>
