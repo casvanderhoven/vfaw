@@ -14,12 +14,11 @@
     </ul>
     </p>
     <h5>Instructions</h5>
-    <p>
     <%= @instruction_array.each do |paragraph| %>
+    <p>
       <%= paragraph %>
-      </br>
-    <% end %>
     </p>
+    <% end %>
   </section>
   <%= image_tag(@recipe.image.url, class: "recipe")  %>
 </article>
