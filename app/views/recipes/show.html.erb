@@ -24,7 +24,7 @@
 </article>
 
   <section>
-    <% if current_user.admin? %>
+    <% if signed_in? && current_user.admin? %>
       <%= button_to 'Edit Recipe', edit_recipe_path, method: :get %>
     <% end %>
   </section>

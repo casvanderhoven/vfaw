@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource :only => [:index, :show]
+  skip_authorize_resource :only => [:index, :show, :with_mealtype]
 
   def index
     @recipes = Recipe.all
