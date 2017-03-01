@@ -15,7 +15,10 @@
     </p>
     <h5>Instructions</h5>
     <p>
-    <%= @recipe.instructions %>
+    <%= @instruction_array.each do |paragraph| %>
+      <%= paragraph %>
+      </br>
+    <% end %>
     </p>
   </section>
   <%= image_tag(@recipe.image.url, class: "recipe")  %>
@@ -23,6 +26,6 @@
 
   <section>
     <% if current_user.admin? %>
-      <%= button_to 'Edit Recipe', new_recipe_path, method: :get %>
+      <%= button_to 'Edit Recipe', edit_recipe_path, method: :get %>
     <% end %>
   </section>
