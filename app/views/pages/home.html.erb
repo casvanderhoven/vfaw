@@ -7,11 +7,12 @@
       <h2 class="subheader">
     <% if current_user.meal_plans.current_meal_plan.presence %>
         Continue with your vegan week! Check today's recipes:
-      <h2>
+      </h2>
       <div class="cards">
         <%= render partial: 'meal_plans/meal_cards', locals: { meals: current_user.meal_plans.current_meal_plan.meals.for_today } %>
       </div>
     <% else %>
+      <h2>
       Are you ready to start your vegan week? <%= link_to "Get started!", new_meal_plan_path %>
       </h2>
       <% end %>
