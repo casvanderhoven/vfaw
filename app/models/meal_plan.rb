@@ -2,6 +2,8 @@ class MealPlan < ApplicationRecord
   belongs_to :user
   has_many :meals, -> { order(:date) }, inverse_of: :meal_plan, dependent: :destroy
 
+  default_scope { order('created_at DESC') }
+
   accepts_nested_attributes_for :meals
 
   validates :start_date, presence: true
@@ -32,5 +34,13 @@ class MealPlan < ApplicationRecord
 
   def to_s
     "#{start_date} - #{start_date + 6}"
+  end
+
+  def self.expired?(meal_plan)
+    if meal_plan.start_date + 6 < Date.today
+      return true
+    else
+      return false
+    end
   end
 end

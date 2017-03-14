@@ -1,12 +1,16 @@
 <% if @current_meal_plan.present? %>
-  <section><h1>today's menu</h1></section>
-  <div class="cards">
-    <%= render partial: 'meal_cards', locals: { meals: @todays_meals } %>
-  </div>
-  <section><h1>rest of the week</h1></section>
-  <div class="cards">
-    <%= render partial: 'meal_cards', locals: {meals: @meals_after_today } %>
-  </div>
+  <% if @todays_meals.present? %>
+    <section><h1>today's menu</h1></section>
+    <div class="cards">
+      <%= render partial: 'meal_cards', locals: { meals: @todays_meals } %>
+    </div>
+    <section><h1>rest of the week</h1></section>
+  <% else %>
+    <section><h1>this week's meals</h1></section>
+    <div class="cards">
+      <%= render partial: 'meal_cards', locals: {meals: @meals_after_today } %>
+    </div>
+  <% end %>
 <% else %>
   <article>
     <section><h1>start your vegan week</h1></section>

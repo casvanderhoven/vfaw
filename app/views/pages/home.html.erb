@@ -3,26 +3,32 @@
     <section>
       <h1>what's up!</h1>
     </section>
-      <section>
-    <% if current_user.meal_plans.current_meal_plan.presence %>
-      <h2 class="subheader">
-        Continue with your vegan week! Check today's recipes:
-      </h2>
-      <div class="cards">
-        <%= render partial: 'meal_plans/meal_cards', locals: { meals: current_user.meal_plans.current_meal_plan.meals.for_today } %>
-      </div>
-    <% else %>
-      <h2 class="subheader">
-      Are you ready to start your vegan week? <%= link_to "Get started!", new_meal_plan_path %>
-      </h2>
+    <section>
+      <% if current_user.meal_plans.current_meal_plan.presence %>
+        <% if !current_user.meal_plans.current_meal_plan.meals.for_today.presence %>
+          <h2 class="subheader">
+            Do you want to start another vegan week? Click <%= link_to "here", new_meal_plan_path %> if you're ready!
+          </h2>
+        <% else %>
+          <h2 class="subheader">
+            Continue with your vegan week! Check today's recipes:
+          </h2>
+          <div class="cards">
+            <%= render partial: 'meal_plans/meal_cards', locals: { meals: current_user.meal_plans.current_meal_plan.meals.for_today } %>
+          </div>
+        <% end %>
+      <% else %>
+        <h2 class="subheader">
+          Are you ready to start your vegan week? <%= link_to "Get started!", new_meal_plan_path %>
+        </h2>
       <% end %>
-      </section>
+    </section>
 
   </article>
 <% else %>
   <article>
     <section>
-      <h1>become vegan for a week</h1>
+      <h1>vegan for a week</h1>
     </section>
     <section>
       <h2 class="subheader">I made this app for people who would like to try out a vegan diet for a week. It sets you up nicely with recipes for breakfast, lunch, and dinner for the whole week, as well as a grocery list.</h2>
